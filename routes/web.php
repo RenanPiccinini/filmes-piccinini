@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Site\SiteController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,10 +16,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Site
+Route::get('/', [SiteController::class, 'home'])->name('home-site');
 
 Auth::routes();
 
+//Admin
+Route::get('/admin', [AdminController::class, 'home'])->name('home-admin');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
