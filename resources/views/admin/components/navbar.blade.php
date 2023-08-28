@@ -29,7 +29,14 @@
                                 </div>
                             </li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="#"><i class="fa fa-power-off"></i> Logout</a></li>
+
+                            <li>
+                                <form id="logout-form" action="{{ route('admin.logout') }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="btn btn-link"><i class="fa fa-power-off"></i> Logout</button>
+                                </form>
+                            </li>
+
                         </ul>
                     </div>
                 </li>

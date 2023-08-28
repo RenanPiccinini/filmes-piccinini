@@ -22,5 +22,11 @@ Route::get('/', [SiteController::class, 'home'])->name('home-site');
 Auth::routes();
 
 //Admin
-Route::get('/admin', [AdminController::class, 'home'])->name('home-admin');
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::middleware(['auth'])->group(function() {
+    Route::get('/admin', [AdminController::class, 'home'])->name('home-admin');
+    Route::post('/logout-admin', [AdminController::class, 'logout'])->name('admin.logout');
+});
+
+
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
