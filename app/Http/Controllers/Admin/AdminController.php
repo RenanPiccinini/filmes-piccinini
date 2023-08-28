@@ -2,17 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Services\Admin\AdminService;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
-    public function __construct(private AdminService $adminservice)
-    {
-        $this->adminservice = $adminservice;
-    }
-
     public function home()
     {
         return view('admin.home');
@@ -20,7 +14,7 @@ class AdminController extends Controller
 
     public function logout()
     {
-        $this->adminservice->logout();
+        Auth::logout();
 
         return redirect()->route('login');
     }

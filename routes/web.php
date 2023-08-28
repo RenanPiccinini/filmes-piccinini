@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\CategoriasController;
+use App\Http\Controllers\Admin\FilmesController;
+use App\Http\Controllers\Admin\UsuariosAdminController;
 use App\Http\Controllers\Site\SiteController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -22,10 +25,27 @@ Route::get('/', [SiteController::class, 'home'])->name('home-site');
 Auth::routes();
 
 //Admin
+Route::post('/admin-criar-usuario-post', [UsuariosAdminController::class, 'criarUsuarioPost'])->name('criar-usuario-admin-post');
 
 Route::middleware(['auth'])->group(function() {
     Route::get('/admin', [AdminController::class, 'home'])->name('home-admin');
-    Route::post('/logout-admin', [AdminController::class, 'logout'])->name('admin.logout');
+    Route::post('/logout-admin', [AdminController::class, 'logout'])->name('admin-logout');
+
+    //usuários
+    Route::get('/admin-usuarios', [UsuariosAdminController::class, 'usuarios'])->name('usuarios-admin');
+    Route::get('/admin-criar-usuario', [UsuariosAdminController::class, 'criarUsuario'])->name('criar-usuario-admin');
+
+    //categorias
+    Route::get('/admin-categorias', [CategoriasController::class, 'categorias'])->name('categorias-admin');
+    Route::get('/admin-criar-categoria', [CategoriasController::class, 'criarCategoria'])->name('criar-categoria-admin');
+    Route::post('/admin-criar-categoria-post', [CategoriasController::class, 'criarCategoriaPost'])->name('criar-categoria-admin-post');
+    Route::delete('/admin-excluir-categoria/{id}', [CategoriasController::class, 'excluirCategoria'])->name('excluir-categoria-admin');
+
+    //filmes
+    Route::get('/admin-criar-filme', [FilmesController::class, 'criarFilme'])->name('criar-filme-admin');
+    Route::post('/admin-criar-filme-post', [FilmesController::class, 'criarFilmePost'])->name('criar-filme-admin-post');
+    Route::get('/filmes/{categoria}', [FilmesController::class, 'filmesPorCategoria'])->name('filmes-listar-por-categoria');
+
 });
 
 
