@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AdicionarFilmeRequest;
 use App\Models\Categoria;
 use App\Models\Filme;
 use App\Services\Admin\FilmesAdminService;
@@ -24,7 +25,7 @@ class FilmesController extends Controller
         ]);
     }
 
-    public function criarFilmePost(Request $request)
+    public function criarFilmePost(AdicionarFilmeRequest $request)
     {
         $this->filmesAdminService->criarFilmePost($request);
 
