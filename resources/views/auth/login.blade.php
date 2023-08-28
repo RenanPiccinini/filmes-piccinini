@@ -7,6 +7,12 @@
             <div class="card">
                 <div class="card-header">{{ __('Login') }}</div>
 
+                @if(session('message'))
+                    <div class="alert alert-success col-md-12" id="alert" role="alert">
+                        {{ session('message') }}
+                    </div>
+                @endif
+
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
@@ -71,3 +77,12 @@
     </div>
 </div>
 @endsection
+
+<script>
+    setTimeout(function() {
+        var alertElement = document.getElementById('alert');
+        if (alertElement) {
+            alertElement.remove();
+        }
+    }, 3000);
+</script>

@@ -5,10 +5,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+                <div class="card-header">Registro</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('criar-usuario-admin-post') }}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="row mb-3">
@@ -40,6 +40,22 @@
                         </div>
 
                         <div class="row mb-3">
+                            <label for="telefone" class="col-md-4 col-form-label text-md-end">Telefone</label>
+
+                            <div class="col-md-6">
+                                <input id="telefone" type="text" class="form-control" name="telefone" value="{{ old('telefone') }}" required autocomplete="telefone">
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="foto" class="col-md-4 col-form-label text-md-end">Foto</label>
+
+                            <div class="col-md-6">
+                                <input id="foto" type="file" name="foto" value="{{ old('foto') }}" required autocomplete="foto">
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
                             <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
@@ -64,7 +80,7 @@
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
+                                    Registrar
                                 </button>
                             </div>
                         </div>
