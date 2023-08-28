@@ -6,9 +6,10 @@
             </div>
             <div class="profile-text">
                 <h5>Nome user</h5>
-                <a href="pages-login.html" class="" data-toggle="tooltip" title="Logout">
-                    <i class="mdi mdi-power"></i>
-                </a>
+                <form id="logout-form" action="{{ route('admin.logout') }}" method="POST">
+                    @csrf
+                    <button type="submit" data-toggle="tooltip" title="Logout" class="btn"><i class="mdi mdi-power"></i> </button>
+                </form>
             </div>
         </div>
         <nav class="sidebar-nav">
