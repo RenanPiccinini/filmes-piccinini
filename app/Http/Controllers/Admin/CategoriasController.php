@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AdicionarCategoriaRequest;
 use App\Models\Categoria;
 use App\Services\Admin\CategoriasAdminService;
 use Illuminate\Http\Request;
@@ -32,8 +33,14 @@ class CategoriasController extends Controller
         ]);
     }
 
-    public function criarCategoriaPost(Request $request)
+    public function criarCategoriaPost(AdicionarCategoriaRequest $request)
     {
+        $categoria = $request->nome_categoria;
+
+        if($categoria){
+            return redirect()->route('criar-categoria-admin')->with('error', 'Essa categoria já existe');
+        }
+
         $this->categoriasAdminService->criarCategoriaPost($request);
 
         return redirect()->route('categorias-admin')->with('message', 'Categoria adicionada com sucesso.');

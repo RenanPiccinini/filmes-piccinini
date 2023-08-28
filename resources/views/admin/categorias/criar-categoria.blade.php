@@ -11,13 +11,9 @@
         </div>
     @endif
 
-    @if($errors->any())
-        <div class="alert alert-danger rounded-6" id="alert">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-                </ul>
+    @if(session('error'))
+        <div class="alert alert-danger col-md-6" id="alert" role="alert">
+            {{ session('error') }}
         </div>
     @endif
 
@@ -25,7 +21,7 @@
         @csrf
         <div class="row">
           <div class="col">
-            <input type="text" class="form-control" name="nome_categoria" placeholder="Nome da categoria" value="{{ old('nome_categoria') }}" required>
+            <input type="text" class="form-control" name="nome_categoria" placeholder="Nome da categoria" value="{{ old('nome_categoria') }}">
           </div>
         </div>
 
