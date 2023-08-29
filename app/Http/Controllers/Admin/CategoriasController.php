@@ -35,7 +35,9 @@ class CategoriasController extends Controller
 
     public function criarCategoriaPost(AdicionarCategoriaRequest $request)
     {
-        $categoria = $request->nome_categoria;
+        $nomeDaCategoria = $request->nome_categoria;
+
+        $categoria = Categoria::where('nome_categoria', $nomeDaCategoria)->first();
 
         if($categoria){
             return redirect()->route('criar-categoria-admin')->with('error', 'Essa categoria já existe');
