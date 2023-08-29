@@ -3,7 +3,7 @@
         <div class="navbar-header">
             <a class="navbar-brand" href="index.html">
                 <b>
-                    <img src="{{ asset('assets/admin/images/filmes_logo.png')}}" style="width: 130px" alt="Logo" class="dark-logo" />
+                    <img src="{{ asset('assets/admin/images/filmes_logo.png')}}" style="width: 170px" alt="Logo" class="dark-logo" />
                     <img src="{{ asset('assets/admin/images/filmes_logo.png')}}" style="width: 130px" alt="Logo" class="light-logo" />
                 </b>
                 <span></span>
