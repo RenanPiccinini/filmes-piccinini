@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container">
-    <h3>Criar Filme</h3>
+    <h3>Criar Filme Youtube</h3>
 
     @if(session('message'))
         <div class="alert alert-success col-md-6" id="alert" role="alert">
@@ -11,15 +11,11 @@
         </div>
     @endif
 
-    @if($errors->any())
-        <div class="alert alert-danger rounded-6" id="alert">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-                </ul>
-        </div>
-    @endif
+    @if(session('error'))
+    <div class="alert alert-danger col-md-6" id="alert" role="alert">
+        {{ session('error') }}
+    </div>
+@endif
 
     <form action="{{ route('criar-filme-admin-post') }}" method="POST" enctype="multipart/form-data">
         @csrf
@@ -41,6 +37,11 @@
             </div>
             <div class="col">
                 <input type="text" class="form-control" name="descricao_filme" placeholder="Breve descrição" value="{{ old('descricao_filme') }}">
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col">
+                <input type="text" class="form-control" id="link_filme" name="link_filme" placeholder="Link do youtube" value="{{ old('link_filme') }}">
             </div>
         </div>
 

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('categoria_filme');
             $table->string('ano_lancamento_filme');
             $table->string('descricao_filme');
+            $table->string('link_filme');
             $table->string('like_filme');
             $table->string('dislike_filme');
             $table->timestamps();

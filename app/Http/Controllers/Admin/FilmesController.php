@@ -27,10 +27,15 @@ class FilmesController extends Controller
 
     public function criarFilmePost(AdicionarFilmeRequest $request)
     {
-        $this->filmesAdminService->criarFilmePost($request);
+        $result = $this->filmesAdminService->criarFilmePost($request);
 
-        return redirect()->route('criar-filme-admin')->with('message', 'Filme adicionado com sucesso');
+        if ($result['success']) {
+            return redirect()->route('criar-filme-admin')->with('message', 'Filme adicionado com sucesso');
+        } else {
+            return redirect()->back()->with('error', 'O link fornecido não é do YouTube.');
+        }
     }
+
 
     public function filmesPorCategoria(Request $request)
     {
