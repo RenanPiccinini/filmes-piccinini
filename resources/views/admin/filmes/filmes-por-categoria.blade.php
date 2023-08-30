@@ -29,6 +29,7 @@
                 <th scope="col">Link</th>
                 <th scope="col">Descrição</th>
                 <th scope="col">Editar</th>
+                <th scope="col">Deletar</th>
             </tr>
         </thead>
         <tbody>
@@ -44,17 +45,48 @@
                     </td>
                     <td>{{ $filme->descricao_filme }}</td>
                     <td>
-                        <a href="{{ route('editar-filme-admin', $filme->id) }}">
+                        <a class="btn btn-primary" href="{{ route('editar-filme-admin', $filme->id) }}">
                             Editar
                         </a>
                     </td>
+                    <td>
+                        <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal{{ $filme->id }}">
+                            Excluir
+                        </button>
+                    </td>
                 </tr>
+
+                <!-- Modal de confirmação para exclusão -->
+                <div class="modal fade" id="confirmDeleteModal{{ $filme->id }}" tabindex="-1" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="confirmDeleteModalLabel">Confirmar Exclusão</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                            </div>
+                            <div class="modal-body">
+                                Tem certeza que deseja excluir o filme/video "{{ $filme->nome_filme }}"?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                <form action="{{ route('deletar-filme', $filme->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Excluir</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             @endforeach
         </tbody>
     </table>
 </div>
 
 @endsection
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
     setTimeout(function() {

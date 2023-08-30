@@ -121,4 +121,15 @@ class FilmesAdminService
         }
     }
 
+    public function deletarFilme($id)
+    {
+        $filme = Filme::find($id);
+        if ($filme) {
+            $filme->delete();
+            return true;
+        }
+        return false;
+    }
+
+
 }
