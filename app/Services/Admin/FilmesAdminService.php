@@ -57,17 +57,19 @@ class FilmesAdminService
     private function converterParaEmbedLink($youtubeUrl)
     {
         $parsedUrl = parse_url($youtubeUrl);
-        parse_str($parsedUrl['query'], $query);
 
-        if (isset($query['v'])) {
-            $videoId = $query['v'];
-            return "https://www.youtube.com/embed/{$videoId}";
+        if (isset($parsedUrl['query'])) {
+            parse_str($parsedUrl['query'], $query);
+
+            if (isset($query['v'])) {
+                $videoId = $query['v'];
+                return "https://www.youtube.com/embed/{$videoId}";
+            }
         }
 
         // Retornar o link original caso não seja possível extrair o ID do vídeo
         return $youtubeUrl;
     }
-
 
 
     public function filmesPorCategoria($categoria)
@@ -80,6 +82,43 @@ class FilmesAdminService
             'filmes' => $filmes,
             'categorias' => $categorias,
         ];
+    }
+
+    public function editarFilme($id)
+    {
+        $filme = Filme::find($id);
+        $categorias = Categoria::all();
+
+        return [
+            'categorias' => $categorias,
+            'filme' => $filme,
+        ];
+    }
+
+    public function editarFilmePost(Request $request)
+    {
+        $youtubeUrl = $request->link_filme;
+
+        // Verificar se o link fornecido é do YouTube
+        if ($this->verificaYoutubeUrl($youtubeUrl)) {
+            // Processar o link do YouTube para o formato de incorporação
+            $embedLink = $this->converterParaEmbedLink($youtubeUrl);
+
+            $id = $request->input('id');
+            $filme = Filme::find($id);
+
+            $filme->nome_filme = $request->nome_filme;
+            $filme->categoria_filme = $request->categoria_filme;
+            $filme->ano_lancamento_filme = $request->ano_lancamento_filme;
+            $filme->descricao_filme = $request->descricao_filme;
+            $filme->link_filme = $embedLink;
+
+            $filme->update();
+
+            return ['success' => true, 'filme' => $filme];
+        } else {
+            return ['success' => false];
+        }
     }
 
 }

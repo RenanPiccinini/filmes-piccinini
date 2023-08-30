@@ -26,6 +26,7 @@ class AdicionarFilmeRequest extends FormRequest
             'categoria_filme' => 'required',
             'ano_lancamento_filme' => 'required',
             'descricao_filme' => 'required',
+            'link_filme' => 'required',
         ];
     }
 
@@ -35,7 +36,8 @@ class AdicionarFilmeRequest extends FormRequest
             'nome_filme.required' => 'O nome do filme é obrigatório',
             'categoria_filme.required' => 'A categoria do filme é obrigatória.',
             'ano_lancamento_filme.required' => 'O Ano de lançamento do filme é obrigatório',
-            'descricao_filme.required' => 'Breve descrição do filme é obrigatória.'
+            'descricao_filme.required' => 'Breve descrição do filme é obrigatória.',
+            'link_filme.required' => 'Link do filme é obrigatório'
         ];
     }
 }

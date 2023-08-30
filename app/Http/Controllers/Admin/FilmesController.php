@@ -36,7 +36,6 @@ class FilmesController extends Controller
         }
     }
 
-
     public function filmesPorCategoria(Request $request)
     {
         $categoria = $request->categoria;
@@ -44,6 +43,24 @@ class FilmesController extends Controller
         $data = $this->filmesAdminService->filmesPorCategoria($categoria);
 
         return view('admin.filmes.filmes-por-categoria', $data);
+    }
+
+    public function editarFilme($id)
+    {
+        $filmeData = $this->filmesAdminService->editarFilme($id);
+
+        return view('admin.filmes.editar-filme', $filmeData);
+    }
+
+    public function editarFilmePost(AdicionarFilmeRequest $request)
+    {
+        $result = $this->filmesAdminService->editarFilmePost($request);
+
+        if ($result['success']) {
+            return redirect()->route('home-admin')->with('message', 'Filme editado com sucesso');
+        }else {
+            return redirect()->back()->with('error', 'O link fornecido não é do YouTube.');
+        }
     }
 
 }

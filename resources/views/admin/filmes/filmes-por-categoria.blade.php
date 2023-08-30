@@ -28,6 +28,7 @@
                 <th scope="col">Ano de lançamento</th>
                 <th scope="col">Link</th>
                 <th scope="col">Descrição</th>
+                <th scope="col">Editar</th>
             </tr>
         </thead>
         <tbody>
@@ -42,6 +43,11 @@
                         </a>
                     </td>
                     <td>{{ $filme->descricao_filme }}</td>
+                    <td>
+                        <a href="{{ route('editar-filme-admin', $filme->id) }}">
+                            Editar
+                        </a>
+                    </td>
                 </tr>
             @endforeach
         </tbody>

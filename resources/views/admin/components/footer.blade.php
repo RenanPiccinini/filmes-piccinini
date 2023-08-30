@@ -1,3 +1,3 @@
 <footer class="footer">
-    © 2023 Admin Piccinini Filmes Youtube
+    © 2023 Admin Youtube Filmes Piccinini
 </footer>

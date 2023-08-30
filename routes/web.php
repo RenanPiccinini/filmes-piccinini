@@ -45,6 +45,8 @@ Route::middleware(['auth'])->group(function() {
     Route::get('/admin-criar-filme', [FilmesController::class, 'criarFilme'])->name('criar-filme-admin');
     Route::post('/admin-criar-filme-post', [FilmesController::class, 'criarFilmePost'])->name('criar-filme-admin-post');
     Route::get('/filmes/{categoria}', [FilmesController::class, 'filmesPorCategoria'])->name('filmes-listar-por-categoria');
+    Route::get('/admin-editar-filme/{id}', [FilmesController::class, 'editarFilme'])->name('editar-filme-admin');
+    Route::post('/admin-editar-filme-post/{id}', [FilmesController::class, 'editarFilmePost'])->name('editar-filme-admin-post');
 
 });
 

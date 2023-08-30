@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/admin/images/favicon.png') }}">
-    <title>Admin Piccinini Filmes Youtube</title>
+    <title>Admin Youtube Filmes Piccinini</title>
     <!-- Bootstrap Core CSS -->
     <link href="{{ asset('assets/admin/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <!-- Morries chart CSS -->
@@ -40,7 +40,7 @@
         <div class="page-wrapper">
             <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
-                    <h3 class="text-themecolor">Piccinini Filmes Youtube</h3>
+                    <h3 class="text-themecolor">Youtube Filmes Piccinini</h3>
                 </div>
             </div>
 

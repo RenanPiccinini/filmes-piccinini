@@ -3,12 +3,12 @@
 @section('content')
 
 <div class="container">
-    <h3>Criar Filme Youtube</h3>
+    <h3>Editar Filme Youtube</h3>
 
     @if(session('message'))
-        <div class="alert alert-success col-md-6" id="alert" role="alert">
-            {{ session('message') }}
-        </div>
+            <div class="alert alert-success col-md-6" id="alert" role="alert">
+                {{ session('message') }}
+            </div>
     @endif
 
     @if(session('error'))
@@ -27,35 +27,41 @@
         </div>
     @endif
 
-    <form action="{{ route('criar-filme-admin-post') }}" method="POST" enctype="multipart/form-data">
+
+    <form action="{{ route('editar-filme-admin-post', $filme->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
+        <input type="hidden" name="id" value="{{ $filme->id }}">
+
         <div class="row">
           <div class="col">
-            <input type="text" class="form-control" name="nome_filme" placeholder="Nome do filme" value="{{ old('nome_filme') }}">
+            <input type="text" class="form-control" name="nome_filme" placeholder="Nome do filme" value="{{ $filme->nome_filme }}">
           </div>
           <div class="col">
             <select class="form-control" name="categoria_filme">
                 @foreach ($categorias as $categoria)
-                    <option value="{{ $categoria->nome_categoria }}">{{ $categoria->nome_categoria }}</option>
+                    <option value="{{ $categoria->nome_categoria }}" {{ $filme->categoria_filme == $categoria->nome_categoria ? 'selected' : '' }}>
+                        {{ $categoria->nome_categoria }}
+                    </option>
                 @endforeach
             </select>
-          </div>
+        </div>
+
         </div>
         <div class="row mt-4">
             <div class="col">
-                <input type="text" class="form-control" id="ano_lancamento_filme" name="ano_lancamento_filme" placeholder="Ano lançamento" value="{{ old('ano_lancamento_filme') }}">
+                <input type="text" class="form-control" id="ano_lancamento_filme" name="ano_lancamento_filme" placeholder="Ano lançamento" value="{{ $filme->ano_lancamento_filme }}">
             </div>
             <div class="col">
-                <input type="text" class="form-control" name="descricao_filme" placeholder="Breve descrição" value="{{ old('descricao_filme') }}">
+                <input type="text" class="form-control" name="descricao_filme" placeholder="Breve descrição" value="{{ $filme->descricao_filme }}">
             </div>
         </div>
         <div class="row mt-4">
             <div class="col">
-                <input type="text" class="form-control" id="link_filme" name="link_filme" placeholder="Link do youtube" value="{{ old('link_filme') }}">
+                <input type="text" class="form-control" id="link_filme" name="link_filme" placeholder="Link do youtube" value="{{ $filme->link_filme }}">
             </div>
         </div>
 
-        <button class="btn btn-success mt-4">Criar</button>
+        <button class="btn btn-success mt-4">Salvar</button>
     </form>
 </div>
 
