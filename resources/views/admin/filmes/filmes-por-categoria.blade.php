@@ -23,9 +23,10 @@
     <table class="table">
         <thead class="table-primary">
             <tr>
-                <th scope="col">Nome do filme</th>
+                <th scope="col">Nome do filme Youtube</th>
                 <th scope="col">Categoria</th>
                 <th scope="col">Ano de lançamento</th>
+                <th scope="col">Link</th>
                 <th scope="col">Descrição</th>
             </tr>
         </thead>
@@ -35,6 +36,11 @@
                     <td>{{ $filme->nome_filme }}</td>
                     <td>{{ $filme->categoria_filme }}</td>
                     <td>{{ $filme->ano_lancamento_filme }}</td>
+                    <td>
+                        <a href="{{ $filme->link_filme }}" target="_blank">
+                            {{ $filme->link_filme }}
+                        </a>
+                    </td>
                     <td>{{ $filme->descricao_filme }}</td>
                 </tr>
             @endforeach

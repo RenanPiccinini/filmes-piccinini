@@ -25,16 +25,50 @@ class FilmesAdminService
 
     public function criarFilmePost(Request $request)
     {
-        $filme = Filme::create([
-            'user_id' => Auth::user()->id,
-            'nome_filme' => $request->nome_filme,
-            'categoria_filme' => $request->categoria_filme,
-            'ano_lancamento_filme' => $request->ano_lancamento_filme,
-            'descricao_filme' => $request->descricao_filme,
-        ]);
+        $youtubeUrl = $request->link_filme;
 
-        return $filme;
+        // Verificar se o link fornecido é do YouTube
+        if ($this->verificaYoutubeUrl($youtubeUrl)) {
+            // Processar o link do YouTube para o formato de incorporação
+            $embedLink = $this->converterParaEmbedLink($youtubeUrl);
+
+            $filme = Filme::create([
+                'user_id' => Auth::user()->id,
+                'nome_filme' => $request->nome_filme,
+                'categoria_filme' => $request->categoria_filme,
+                'ano_lancamento_filme' => $request->ano_lancamento_filme,
+                'link_filme' => $embedLink, // Armazenar o link de incorporação
+                'descricao_filme' => $request->descricao_filme,
+            ]);
+
+            return ['success' => true, 'filme' => $filme];
+        } else {
+            return ['success' => false];
+        }
     }
+
+    // Função para verificar se um URL é do YouTube
+    private function verificaYoutubeUrl($url)
+    {
+        return (strpos($url, 'youtube.com') !== false || strpos($url, 'youtu.be') !== false);
+    }
+
+    // Função para converter qualquer link do YouTube para o formato de incorporação
+    private function converterParaEmbedLink($youtubeUrl)
+    {
+        $parsedUrl = parse_url($youtubeUrl);
+        parse_str($parsedUrl['query'], $query);
+
+        if (isset($query['v'])) {
+            $videoId = $query['v'];
+            return "https://www.youtube.com/embed/{$videoId}";
+        }
+
+        // Retornar o link original caso não seja possível extrair o ID do vídeo
+        return $youtubeUrl;
+    }
+
+
 
     public function filmesPorCategoria($categoria)
     {

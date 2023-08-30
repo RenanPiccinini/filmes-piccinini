@@ -30,7 +30,7 @@
                 <li>
                     <a href="#" data-toggle="collapse" class="nav-link dropdown-toggle" data-target="#filmesMenu">
                         <i class="mdi mdi-chart-bubble"></i>
-                        <span>Filmes por categoria</span>
+                        <span>Youtube por categoria</span>
                     </a>
                     <ul id="filmesMenu" class="collapse">
                         @foreach ($categorias as $categoria)
@@ -46,7 +46,7 @@
                 <li>
                     <a href="{{ route('criar-filme-admin') }}">
                         <i class="mdi mdi-chart-bubble"></i>
-                        <span>Adicionar filme</span>
+                        <span>Adicionar Youtube</span>
                     </a>
                 </li>
             </ul>
@@ -54,7 +54,7 @@
                 <li>
                     <a href="{{ route('categorias-admin') }}">
                         <i class="mdi mdi-chart-bubble"></i>
-                        <span>Categorias de filmes</span>
+                        <span>Categorias Youtube</span>
                     </a>
                 </li>
             </ul>

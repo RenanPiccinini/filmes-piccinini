@@ -15,6 +15,7 @@ class Filme extends Model
         'categoria_filme',
         'ano_lancamento_filme',
         'descricao_filme',
+        'link_filme',
         'like_filme',
         'dislike_filme'
     ];
