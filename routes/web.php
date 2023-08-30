@@ -4,7 +4,9 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoriasController;
 use App\Http\Controllers\Admin\FilmesController;
 use App\Http\Controllers\Admin\UsuariosAdminController;
+use App\Http\Controllers\Site\ContatoController;
 use App\Http\Controllers\Site\SiteController;
+use App\Http\Controllers\Site\SiteFilmesController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +23,9 @@ use Illuminate\Support\Facades\Route;
 
 //Site
 Route::get('/', [SiteController::class, 'home'])->name('home-site');
+Route::get('/site/filmes/{categoria}', [SiteFilmesController::class, 'filmesPorCategoria'])->name('site-filmes-listar-por-categoria');
+Route::get('/contato', [ContatoController::class, 'contato'])->name('contato-site');
+Route::post('/contato-post', [ContatoController::class, 'contatoPost'])->name('contato-site-post');
 
 Auth::routes();
 

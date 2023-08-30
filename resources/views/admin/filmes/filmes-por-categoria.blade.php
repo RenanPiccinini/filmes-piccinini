@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="container">
+<div class="container col-md-10">
 
     @if(session('message'))
         <div class="alert alert-success col-md-6" id="alert" role="alert">
@@ -23,7 +23,7 @@
     <table class="table">
         <thead class="table-primary">
             <tr>
-                <th scope="col">Nome do filme Youtube</th>
+                <th scope="col">Nome do filme/vídeo Youtube</th>
                 <th scope="col">Categoria</th>
                 <th scope="col">Ano de lançamento</th>
                 <th scope="col">Link</th>
