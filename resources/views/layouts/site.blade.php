@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Place favicon.ico in the root directory -->
-    <link href="{{ asset('assets/site/images/favicon.ico') }}" type="img/x-icon" rel="shortcut icon">
+    <link href="{{ asset('assets/site/images/icon.png') }}" type="img/x-icon" rel="shortcut icon">
     <!-- All css files are included here. -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,15 +29,16 @@
 
 <body>
 
-<div id="main-wrapper">
+    <div id="main-wrapper" class="d-flex flex-column min-vh-100">
+        @include('site.components.header')
 
-    @include('site.components.header')
+        <div id="content-wrapper" class="flex-fill">
+            @yield('content')
+        </div>
 
-    @yield('content')
+        @include('site.components.footer')
+    </div>
 
-    @include('site.components.footer')
-
-</div>
 
 <script src="{{ asset('assets/site/js/vendor/modernizr-3.6.0.min.js') }}"></script>
 <script src="{{ asset('assets/site/js/vendor/jquery-3.6.0.min.js') }}"></script>
