@@ -16,7 +16,7 @@
             <div class="col-12 col-md-8 col-lg-5">
 
               @if($errors->any())
-                  <div class="alert alert-danger rounded-3 col-12">
+                  <div class="alert alert-danger rounded-3 col-12" id="alert">
                         <ul>
                             @foreach ($errors->all() as $error)
                                 <li>{{ $error }}</li>
@@ -26,7 +26,7 @@
               @endif
 
               @if(session('message'))
-                    <div class="alert alert-success rounded-3 col-12">
+                    <div class="alert alert-success rounded-3 col-12" id="alert">
                         {{ session('message') }}
                     </div>
               @endif
@@ -121,4 +121,13 @@
             }
         });
     });
+</script>
+
+<script>
+    setTimeout(function() {
+        var alertElement = document.getElementById('alert');
+        if (alertElement) {
+            alertElement.remove();
+        }
+    }, 4000);
 </script>
