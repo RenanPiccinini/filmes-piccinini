@@ -32,9 +32,10 @@ class FilmesController extends Controller
         if ($result['success']) {
             return redirect()->route('criar-filme-admin')->with('message', 'Filme adicionado com sucesso');
         } else {
-            return redirect()->back()->with('error', 'O link fornecido não é do YouTube.');
+            return redirect()->back()->with('error', $result['message']);
         }
     }
+
 
     public function filmesPorCategoria(Request $request)
     {
@@ -56,12 +57,15 @@ class FilmesController extends Controller
     {
         $result = $this->filmesAdminService->editarFilmePost($request);
 
-        if ($result['success']) {
+        if (isset($result['success']) && $result['success']) {
             return redirect()->route('home-admin')->with('message', 'Filme editado com sucesso');
-        }else {
+        } else if (isset($result['error']) && $result['error']) {
+            return redirect()->back()->with('error', $result['message']);
+        } else {
             return redirect()->back()->with('error', 'O link fornecido não é do YouTube.');
         }
     }
+
 
     public function deletarFilme($id)
     {
