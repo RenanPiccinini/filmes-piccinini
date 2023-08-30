@@ -63,4 +63,16 @@ class FilmesController extends Controller
         }
     }
 
+    public function deletarFilme($id)
+    {
+        $result = $this->filmesAdminService->deletarFilme($id);
+
+        if ($result) {
+            return redirect()->back()->with('message', 'Filme excluído com sucesso.');
+        } else {
+            return redirect()->back()->with('error', 'Filme não encontrado');
+        }
+    }
+
+
 }

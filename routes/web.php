@@ -47,7 +47,7 @@ Route::middleware(['auth'])->group(function() {
     Route::get('/filmes/{categoria}', [FilmesController::class, 'filmesPorCategoria'])->name('filmes-listar-por-categoria');
     Route::get('/admin-editar-filme/{id}', [FilmesController::class, 'editarFilme'])->name('editar-filme-admin');
     Route::post('/admin-editar-filme-post/{id}', [FilmesController::class, 'editarFilmePost'])->name('editar-filme-admin-post');
-
+    Route::delete('/admin-delete-filme/{id}', [FilmesController::class, 'deletarFilme'])->name('deletar-filme');
 });
 
 
