@@ -9,12 +9,17 @@ class FilmesSiteService
 {
     public function filmes()
     {
-        return Filme::orderBy('created_at', 'desc')->take(6)->get();
+        return Filme::orderBy('created_at', 'desc')->take(4)->get();
+    }
+
+    public function todosFilmes()
+    {
+        return Filme::orderBy('created_at', 'desc')->paginate(4);
     }
 
     public function filmesPorCategoria($categoria)
     {
-        $filmes = Filme::where('categoria_filme', $categoria)->paginate(10);
+        $filmes = Filme::where('categoria_filme', $categoria)->paginate(6);
         $categorias = Categoria::all();
 
         return [
