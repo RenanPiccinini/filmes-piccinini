@@ -27,6 +27,10 @@ Route::get('/site/filmes/{categoria}', [SiteFilmesController::class, 'filmesPorC
 Route::get('/contato', [ContatoController::class, 'contato'])->name('contato-site');
 Route::post('/contato-post', [ContatoController::class, 'contatoPost'])->name('contato-site-post');
 
+//like
+Route::post('/like-filme/{filme}', [SiteFilmesController::class, 'likeFilme'])->name('like-filme');
+Route::post('/dislike-filme/{filme}', [SiteFilmesController::class, 'dislikeFilme'])->name('dislike-filme');
+
 Auth::routes();
 
 //Admin
