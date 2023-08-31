@@ -147,7 +147,6 @@ class FilmesAdminService
         }
     }
 
-
     public function deletarFilme($id)
     {
         $filme = Filme::find($id);
@@ -158,5 +157,10 @@ class FilmesAdminService
         return false;
     }
 
+    public function meusFilmes($id)
+    {
+        $meus_filmes = Filme::where('user_id', $id)->get();
 
+        return $meus_filmes;
+    }
 }

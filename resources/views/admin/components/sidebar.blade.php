@@ -44,6 +44,15 @@
 
             <ul>
                 <li>
+                    <a href="{{ route('meus-filmes', Auth::user()->id) }}">
+                        <i class="mdi mdi-chart-bubble"></i>
+                        <span>Meus Youtube</span>
+                    </a>
+                </li>
+            </ul>
+
+            <ul>
+                <li>
                     <a href="{{ route('criar-filme-admin') }}">
                         <i class="mdi mdi-chart-bubble"></i>
                         <span>Adicionar Youtube</span>
