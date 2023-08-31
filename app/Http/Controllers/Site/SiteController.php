@@ -17,11 +17,13 @@ class SiteController extends Controller
     public function home()
     {
         $filmes = $this->filmesSiteService->filmes();
-        $categorias = Categoria::all();
+        $todos_filmes = $this->filmesSiteService->todosFilmes();
+        $categorias = Categoria::orderBy('nome_categoria')->get();
 
         return view('site.home', [
             'filmes' => $filmes,
-            'categorias' => $categorias
+            'categorias' => $categorias,
+            'todos_filmes' => $todos_filmes
         ]);
     }
 }

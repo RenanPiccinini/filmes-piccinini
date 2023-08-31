@@ -88,7 +88,7 @@ class FilmesAdminService
     public function filmesPorCategoria($categoria)
     {
         $filmes = Filme::where('categoria_filme', $categoria)->paginate(10);
-        $categorias = Categoria::all();
+        $categorias = Categoria::orderBy('nome_categoria')->get();
 
         return [
             'categoria' => $categoria,
