@@ -78,5 +78,15 @@ class FilmesController extends Controller
         }
     }
 
+    public function meusFilmes($id)
+    {
+        $meus_filmes = $this->filmesAdminService->meusFilmes($id);
+        $categorias = Categoria::orderBy('nome_categoria')->get();
+
+        return view('admin.filmes.meus-filmes', [
+            'filmes' => $meus_filmes,
+            'categorias' => $categorias
+        ]);
+    }
 
 }
