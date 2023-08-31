@@ -91,3 +91,39 @@
     </div>
 </div>
 @endsection
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+      $('#telefone').on('keypress', function(event) {
+        var charCode = (event.which) ? event.which : event.keyCode;
+        var phoneNumber = $(this).val();
+
+        if (charCode != 8 && charCode != 0 && (charCode < 48 || charCode > 57)) {
+          event.preventDefault();
+          return false;
+        }
+
+        if (phoneNumber.length == 0) {
+          $(this).val('(');
+        } else if (phoneNumber.length == 3) {
+          $(this).val(phoneNumber + ') ');
+        } else if (phoneNumber.length == 10) {
+          $(this).val(phoneNumber + '-');
+        }
+      });
+    });
+</script>
+
+<script>
+    $(document).ready(function() {
+        $('#name').on('input', function() {
+            var inputValue = $(this).val();
+            var regex = /^[A-Za-z]+$/;
+
+            if (!regex.test(inputValue)) {
+                $(this).val(inputValue.replace(/[^A-Za-z]/g, ''));
+            }
+        });
+    });
+</script>

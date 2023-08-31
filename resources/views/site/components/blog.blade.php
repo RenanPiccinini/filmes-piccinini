@@ -27,6 +27,29 @@
                                         </ul>
                                         <a class="read-btn" href="{{ $filme->link_filme }}" target="_blank">Ver em outra aba <i class="fa fa-caret-right"></i></a>
                                     </div>
+                                    <div class="d-flex justify-content-between mt-3">
+                                        <form action="{{ route('like-filme', ['filme' => $filme->id]) }}" method="POST">
+                                            @csrf
+                                            <button type="submit" class="btn btn-success">👍 Like
+                                                @if($filme->like_filme == null)
+                                                    (0)
+                                                @else
+                                                    ({{ $filme->like_filme }})
+                                                @endif
+                                            </button>
+                                        </form>
+
+                                        <form action="{{ route('dislike-filme', ['filme' => $filme->id]) }}" method="POST">
+                                            @csrf
+                                            <button type="submit" class="btn btn-danger">👎 Dislike
+                                                @if($filme->dislike_filme == null)
+                                                    (0)
+                                                @else
+                                                    ({{ $filme->dislike_filme }})
+                                                @endif
+                                            </button>
+                                        </form>
+                                    </div>
                                 </div>
                             @endforeach
                         </div>

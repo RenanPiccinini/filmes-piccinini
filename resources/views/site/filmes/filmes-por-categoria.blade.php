@@ -34,6 +34,29 @@
                                 <p class="card-text text-center">{{ $filme->descricao_filme }}</p>
                                 <a href="{{ $filme->link_filme }}" class="btn btn-primary" target="_blank">Assistir</a>
                             </div>
+                            <div class="d-flex justify-content-between ">
+                                <form action="{{ route('like-filme', ['filme' => $filme->id]) }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="btn btn-success">👍 Like
+                                        @if($filme->like_filme == null)
+                                            (0)
+                                        @else
+                                            ({{ $filme->like_filme }})
+                                        @endif
+                                    </button>
+                                </form>
+
+                                <form action="{{ route('dislike-filme', ['filme' => $filme->id]) }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="btn btn-danger">👎 Dislike
+                                        @if($filme->dislike_filme == null)
+                                            (0)
+                                        @else
+                                            ({{ $filme->dislike_filme }})
+                                        @endif
+                                    </button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 @endif

@@ -28,4 +28,16 @@ class FilmesSiteService
             'categorias' => $categorias,
         ];
     }
+
+    public function likeFilme(Filme $filme)
+    {
+        $filme->like_filme += 1;
+        $filme->save();
+    }
+
+    public function dislikeFilme(Filme $filme)
+    {
+        $filme->dislike_filme += 1;
+        $filme->save();
+    }
 }

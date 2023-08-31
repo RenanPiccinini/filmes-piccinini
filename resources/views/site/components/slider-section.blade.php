@@ -18,6 +18,29 @@
                                                     <h4><a href="#">{{ $filme->nome_filme }}</a></h4>
                                                     <span>{{ $filme->categoria_filme }}</span>
                                                 </div>
+                                                <div class="d-flex ml-2">
+                                                    <form action="{{ route('like-filme', ['filme' => $filme->id]) }}" method="POST">
+                                                        @csrf
+                                                        <button type="submit" class="btn btn-success m-2">👍 Like
+                                                            @if($filme->like_filme == null)
+                                                                (0)
+                                                            @else
+                                                                ({{ $filme->like_filme }})
+                                                            @endif
+                                                        </button>
+                                                    </form>
+
+                                                    <form action="{{ route('dislike-filme', ['filme' => $filme->id]) }}" method="POST">
+                                                        @csrf
+                                                        <button type="submit" class="btn btn-danger m-2">👎 Dislike
+                                                            @if($filme->dislike_filme == null)
+                                                                (0)
+                                                            @else
+                                                                ({{ $filme->dislike_filme }})
+                                                            @endif
+                                                        </button>
+                                                    </form>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
