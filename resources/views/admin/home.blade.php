@@ -16,14 +16,14 @@
         </div>
     @endif
 
-    <div class="row">
+    <div class="row text-center">
         <!-- Column -->
         <div class="col-lg-3 col-md-6">
             <div class="card">
                 <div class="card-body">
                     <!-- Row -->
                     <div class="row">
-                        <div class="col-8"><h2>2376 <i class="ti-angle-up font-14 text-success"></i></h2>
+                        <div class="col-12"><h2>{{ count($filmes) }} <i class="ti-angle-up font-14 text-success"></i></h2>
                             <h6>Filmes cadastrados</h6></div>
                         <div class="col-4 align-self-center text-right p-l-0">
                             <div id="sparklinedash"></div>
@@ -38,7 +38,7 @@
                 <div class="card-body">
                     <!-- Row -->
                     <div class="row">
-                        <div class="col-8"><h2 class="">3670 <i class="ti-angle-up font-14 text-success"></i></h2>
+                        <div class="col-12"><h2 class="">{{ count($usuarios) }} <i class="ti-angle-up font-14 text-success"></i></h2>
                             <h6>Usuários cadastrados</h6></div>
                         <div class="col-4 align-self-center text-right p-l-0">
                             <div id="sparklinedash"></div>
