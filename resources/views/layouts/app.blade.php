@@ -7,7 +7,8 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Admin Youtube Filmes Piccinini</title>
+    <link href="{{ asset('assets/site/images/icon.png') }}" type="img/x-icon" rel="shortcut icon">
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
@@ -28,10 +29,13 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
 </head>
-<body>
+<body style="background-image: url({{ asset('assets/site/images/fundo_login2.png') }}); width:100%">
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
+                <div class="logo mr-3">
+                    <a href="{{ route('home-site') }}"><img src="{{ asset('assets/site/images/icon.png') }}" width="50px" height="35px"  alt=""></a>
+                </div>
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
@@ -51,13 +55,19 @@
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    <a class="nav-link" href="{{ route('login') }}">Entrar</a>
                                 </li>
                             @endif
 
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">Registrar</a>
+                                </li>
+                            @endif
+
+                            @if (Route::has('home-site'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('home-site') }}">Site</a>
                                 </li>
                             @endif
                         @else

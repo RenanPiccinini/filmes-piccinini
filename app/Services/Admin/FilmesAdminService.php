@@ -18,7 +18,7 @@ class FilmesAdminService
 
     public function criarFilme()
     {
-        $categorias = Categoria::all();
+        $categorias = Categoria::orderBy('nome_categoria')->get();
 
         return $categorias;
     }
@@ -100,7 +100,7 @@ class FilmesAdminService
     public function editarFilme($id)
     {
         $filme = Filme::find($id);
-        $categorias = Categoria::all();
+        $categorias = Categoria::orderBy('nome_categoria')->get();
 
         return [
             'categorias' => $categorias,

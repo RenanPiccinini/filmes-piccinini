@@ -1,15 +1,5 @@
-<header class="topbar">
+<header class="topbar" style="background-image: url({{ asset('assets/site/images/fundo_login2.png') }})">
     <nav class="navbar top-navbar navbar-expand-md navbar-light">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="index.html">
-                <b>
-                    <img src="{{ asset('assets/admin/images/filmes_logo.png')}}" style="width: 170px" alt="Logo" class="dark-logo" />
-                    <img src="{{ asset('assets/admin/images/filmes_logo.png')}}" style="width: 130px" alt="Logo" class="light-logo" />
-                </b>
-                <span></span>
-            </a>
-        </div>
-
         <div class="navbar-collapse">
             <ul class="navbar-nav mr-auto mt-md-0">
                 <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="mdi mdi-menu"></i></a> </li>
